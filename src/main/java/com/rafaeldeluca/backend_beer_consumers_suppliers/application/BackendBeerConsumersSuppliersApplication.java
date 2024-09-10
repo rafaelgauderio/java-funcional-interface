@@ -1,4 +1,4 @@
-package com.rafaeldeluca.backend_beer_consumers_suppliers;
+package com.rafaeldeluca.backend_beer_consumers_suppliers.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

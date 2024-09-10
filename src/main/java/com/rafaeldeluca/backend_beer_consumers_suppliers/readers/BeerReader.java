@@ -37,7 +37,7 @@ public class BeerReader {
             ioException.printStackTrace();
             throw new RuntimeException("Can not read json File", ioException);
         }
-  
+
     }
 
 }
