@@ -18,10 +18,6 @@ public class Program {
         System.out.println("\nPrinting without inform object type");
         beerList.forEach(beer -> System.out.println(beer));
 
-        System.out.println("\nUsing consumer");
-        final Consumer<Beer> beerConsumer = beer -> System.out.println(beer);
-        beerList.forEach(beerConsumer);
-
         System.out.println("\nSugar sintaxe");
         beerList.forEach(System.out::println);
 
@@ -29,6 +25,10 @@ public class Program {
         for(Beer nickname : beerList) {
             System.out.println(nickname);
         }
+
+        System.out.println("\nUsing consumer");
+        final Consumer<Beer> beerConsumer = beer -> System.out.println(beer);
+        beerList.forEach(beerConsumer);
 
 
     }
