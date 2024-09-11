@@ -12,11 +12,12 @@ public class Program {
     }
 
     private void testConsumers(List<Beer> beerList) {
+        // receive a data input and to do return anything
+        // has to default methods (accept, andThen)
         final Consumer<Beer> beerConsumer = beer -> System.out.println(beer);
-
-        System.out.println("\nforEach");
+        System.out.println("\nUsing consumer");
         beerList.forEach(beerConsumer);
-        System.out.println("\nfor");
+        System.out.println("\nforEach");
         for(Beer nickname : beerList) {
             System.out.println(nickname);
         }
