@@ -29,8 +29,6 @@ public class Program {
         System.out.println("\nUsing consumer");
         final Consumer<Beer> beerConsumer = beer -> System.out.println(beer);
         beerList.forEach(beerConsumer);
-
-
     }
 
     public static void main(String[] args) {
