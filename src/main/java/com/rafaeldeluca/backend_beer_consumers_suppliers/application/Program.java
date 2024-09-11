@@ -2,6 +2,7 @@ package com.rafaeldeluca.backend_beer_consumers_suppliers.application;
 
 import com.rafaeldeluca.backend_beer_consumers_suppliers.entities.Beer;
 import com.rafaeldeluca.backend_beer_consumers_suppliers.readers.BeerReader;
+import com.rafaeldeluca.backend_beer_consumers_suppliers.services.BeerService;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -31,9 +32,20 @@ public class Program {
         beerList.forEach(beerConsumer);
     }
 
+    private void testBeerService(List<Beer> beerList) {
+
+        final Beer beer  = BeerService.getBeerFromFile("Any beer");
+        if(beer !=null) {
+            System.out.println(beer);
+        } else {
+            System.out.println("No beer was found on the file database");
+        }
+    }
+
     public static void main(String[] args) {
         final List<Beer> beerList = new BeerReader("beers.json").streamToList();
         Program program = new Program();
-        program.testConsumers(beerList);
+        //program.testConsumers(beerList);
+        program.testBeerService(beerList);
     }
 }
