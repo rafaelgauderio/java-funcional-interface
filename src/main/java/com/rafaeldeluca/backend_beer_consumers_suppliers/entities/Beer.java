@@ -55,4 +55,8 @@ public class Beer {
                 ", alcohol content=" + alcohol +
                 '}';
     }
+
+    public boolean alcoholContentHigherThanEight() {
+        return this.getAlcohol() > 8.0;
+    }
 }
