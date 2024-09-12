@@ -59,4 +59,5 @@ public class Beer {
     public boolean alcoholContentHigherThanEight() {
         return this.getAlcohol() > 8.0;
     }
+
 }

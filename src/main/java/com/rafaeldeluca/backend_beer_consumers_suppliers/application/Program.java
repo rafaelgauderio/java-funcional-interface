@@ -4,10 +4,12 @@ import com.rafaeldeluca.backend_beer_consumers_suppliers.entities.Beer;
 import com.rafaeldeluca.backend_beer_consumers_suppliers.readers.BeerReader;
 import com.rafaeldeluca.backend_beer_consumers_suppliers.services.BeerService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class Program {
 
@@ -45,7 +47,7 @@ public class Program {
         }
     }
 
-    private void testSupliers(List<Beer> beerList) {
+    private void testSuppliers(List<Beer> beerList) {
         // supplier supplies value to a function
         // supllier make possivbel to produce data and return it
         // using Optinal it is not necessary to treat empty and blank responses
@@ -76,7 +78,7 @@ public class Program {
                 .filter(beerPredicate)
                 .forEach(System.out::println);
 
-        System.out.println("\nDeclaring predicate in the filter (alcohol content less than 3.0");
+        System.out.println("\nDeclaring predicate in the filter (alcohol content less than 3.0)");
         beerList.stream()
                 .filter(ceva -> ceva.getAlcohol() < 3.0)
                 .forEach(System.out::println);
@@ -88,12 +90,49 @@ public class Program {
 
     }
 
+    private void testFunctionalInterface(List<Beer> beerList) {
+        // functional interface thar can transform data
+        System.out.println("\nWithout Functional interface");
+        //final List<Beer> malts = new ArrayList<>();
+        final var malts = new ArrayList<>();
+        for (Beer nickname : beerList) {
+            final String malt = nickname.getMalts();
+            // removing repeat malt
+            if (malts.contains(malt) == false) {
+                malts.add(malt);
+            }
+        }
+        System.out.println(malts);
+
+        System.out.println("\nUsing Functional Paradigm");
+        beerList.stream()
+                // transform Object Beer on malts
+                .map(
+                        beer -> {
+                            return beer.getMalts() + ", ";
+                        })
+                .distinct()
+                .collect(Collectors.toList())
+                .forEach(System.out::printf);
+
+        System.out.println("\n\nMore elegant code");
+        beerList.stream()
+                .map(Beer::getMalts)
+                .map((beer) -> {
+                    return (beer) + ", ";
+                })
+                .distinct()
+                .collect(Collectors.toList())
+                .forEach(System.out::print);
+    }
+
     public static void main(String[] args) {
         final List<Beer> beerList = new BeerReader("beers.json").streamToList();
         Program program = new Program();
         //program.testConsumers(beerList);
         //program.testBeerService(beerList);
-        //program.testSupliers(beerList);
-        program.testPredicates(beerList);
+        //program.testSuppliers(beerList);
+        //program.testPredicates(beerList);
+        program.testFunctionalInterface(beerList);
     }
 }
