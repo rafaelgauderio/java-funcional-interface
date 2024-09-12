@@ -54,8 +54,6 @@ public class Program {
         final Supplier<Beer> beerSupplier = () -> beerList.get(1);
         //System.out.println(beer.orElse(beerList.get(0)));
         System.out.println(beer.orElseGet(beerSupplier));
-
-
     }
 
     public static void main(String[] args) {
